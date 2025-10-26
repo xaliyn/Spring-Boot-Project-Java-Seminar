@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title th:text="${title}">Photon by HTML5 UP</title>
+    <title th:text="${title}">TownsApp - Photon Theme</title>
 
     <!-- CSS -->
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
@@ -18,20 +18,18 @@
         <span class="icon solid major fa-cloud"></span>
         <h1 th:text="${title}">Welcome to TownsApp</h1>
         <p>
-            A Spring Boot Seminar Project<br />
-            using Thymeleaf, Security, and a free responsive HTML5 theme.
+            A Spring Boot Seminar Project using Thymeleaf, Spring Security, and a responsive HTML5 design.
         </p>
 
-        <!-- Buttons -->
+        <!-- Navigation Buttons -->
         <ul class="actions special">
             <li><a th:href="@{/}" class="button primary">Home</a></li>
+            <li><a th:href="@{/about}" class="button">About</a></li>
 
-            <!-- Show Login if user is anonymous -->
+            <!-- Login/Logout handling -->
             <li th:if="${#authentication == null or #authentication.name == 'anonymousUser'}">
                 <a th:href="@{/login}" class="button">Login</a>
             </li>
-
-            <!-- Show Logout if user is logged in -->
             <li th:if="${#authentication != null and #authentication.name != 'anonymousUser'}">
                 <a th:href="@{/logout}" class="button">Logout</a>
             </li>
@@ -39,20 +37,26 @@
     </div>
 </section>
 
-<!-- Main -->
+<!-- Main Section -->
 <section id="main">
     <div class="inner">
         <header class="major">
-            <h2>About the Project</h2>
+            <h2>Welcome to TownsApp</h2>
         </header>
         <p>
-            This web application demonstrates how to build a responsive, data-driven system
-            using Java Spring Boot, Thymeleaf, and MySQL.
-            The later seminar tasks will add authentication, CRUD operations, and chart visualizations
-            based on Hungarian town data.
+            <strong>TownsApp</strong> is a Java Spring Boot web application developed for the
+            <em>Java Applications Seminar</em> course at <strong>John von Neumann University</strong>.
+            The project demonstrates how to create a modern web application using
+            Spring Boot, Thymeleaf, MySQL, and Chart.js for data visualization.
         </p>
 
-        <!-- Display currently logged user (optional for seminar demo) -->
+        <p>
+            Users can view data about Hungarian towns and counties, access statistics,
+            and visualize population trends. Future seminar tasks will extend this project
+            with authentication, database CRUD operations, and RESTful APIs.
+        </p>
+
+        <!-- Logged user info (optional) -->
         <p th:if="${#authentication != null and #authentication.name != 'anonymousUser'}">
             <strong>Logged in as:</strong> <span th:text="${#authentication.name}"></span>
         </p>
@@ -64,7 +68,7 @@
     <div class="inner">
         <ul class="copyright">
             <li>&copy; TownsApp 2025</li>
-            <li>Design based on <a href="https://html5up.net/photon">Photon Theme</a></li>
+            <li>Theme: <a href="https://html5up.net/photon">Photon by HTML5 UP</a></li>
             <li><strong>Developers:</strong> Khaliun Tamir (EU2XJ4) & Enkhjee Gantulga (CPY45Q)</li>
         </ul>
     </div>
