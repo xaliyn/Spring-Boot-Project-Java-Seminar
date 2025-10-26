@@ -17,10 +17,24 @@
     <div class="inner">
         <span class="icon solid major fa-cloud"></span>
         <h1 th:text="${title}">Welcome to TownsApp</h1>
-        <p>A Spring Boot Seminar Project<br />
-            using Thymeleaf and a free responsive HTML5 theme.</p>
+        <p>
+            A Spring Boot Seminar Project<br />
+            using Thymeleaf, Security, and a free responsive HTML5 theme.
+        </p>
+
+        <!-- Buttons -->
         <ul class="actions special">
             <li><a th:href="@{/}" class="button primary">Home</a></li>
+
+            <!-- Show Login if user is anonymous -->
+            <li th:if="${#authentication == null or #authentication.name == 'anonymousUser'}">
+                <a th:href="@{/login}" class="button">Login</a>
+            </li>
+
+            <!-- Show Logout if user is logged in -->
+            <li th:if="${#authentication != null and #authentication.name != 'anonymousUser'}">
+                <a th:href="@{/logout}" class="button">Logout</a>
+            </li>
         </ul>
     </div>
 </section>
@@ -34,8 +48,13 @@
         <p>
             This web application demonstrates how to build a responsive, data-driven system
             using Java Spring Boot, Thymeleaf, and MySQL.
-            The later tasks will add authentication, CRUD operations, and chart visualizations
+            The later seminar tasks will add authentication, CRUD operations, and chart visualizations
             based on Hungarian town data.
+        </p>
+
+        <!-- Display currently logged user (optional for seminar demo) -->
+        <p th:if="${#authentication != null and #authentication.name != 'anonymousUser'}">
+            <strong>Logged in as:</strong> <span th:text="${#authentication.name}"></span>
         </p>
     </div>
 </section>
@@ -57,5 +76,6 @@
 <script th:src="@{/assets/js/breakpoints.min.js}"></script>
 <script th:src="@{/assets/js/util.js}"></script>
 <script th:src="@{/assets/js/main.js}"></script>
+
 </body>
 </html>
