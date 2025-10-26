@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Database Overview</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h2>County Table</h2>
+<table border="1">
+    <tr><th>ID</th><th>Name</th></tr>
+    <tr th:each="c : ${counties}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.cname}"></td>
+    </tr>
+</table>
+
+<h2>Town Table</h2>
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>County ID</th></tr>
+    <tr th:each="t : ${towns}">
+        <td th:text="${t.id}"></td>
+        <td th:text="${t.tname}"></td>
+        <td th:text="${t.countyid}"></td>
+    </tr>
+</table>
+
+<h2>Population Table</h2>
+<table border="1">
+    <tr><th>ID</th><th>Year</th><th>Total</th><th>Women</th><th>Town ID</th></tr>
+    <tr th:each="p : ${populations}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.ryear}"></td>
+        <td th:text="${p.total}"></td>
+        <td th:text="${p.women}"></td>
+        <td th:text="${p.townid}"></td>
+    </tr>
+</table>
+</body>
+</html>

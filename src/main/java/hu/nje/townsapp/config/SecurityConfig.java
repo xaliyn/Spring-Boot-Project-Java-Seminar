@@ -20,7 +20,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(PasswordEncoder encoder) {
+    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder encoder) {
         var admin = User.withUsername("admin")
                 .password(encoder.encode("admin123"))
                 .roles("ADMIN")
@@ -38,12 +38,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable());
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/assets/**", "/images/**", "/css/**", "/js/**").permitAll()
+                .requestMatchers("/", "/about", "/assets/**", "/images/**", "/css/**", "/js/**").permitAll()
+                .requestMatchers("/register").permitAll()   // ✅ allow register page
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
         );
         http.formLogin(Customizer.withDefaults());
-        http.logout(logout -> logout.logoutSuccessUrl("/"));
+        http.logout(logout -> logout.logoutSuccessUrl("/")); // ✅ logout back to home
         return http.build();
     }
+
 }

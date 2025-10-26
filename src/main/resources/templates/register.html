@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}"/>
+    <noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}"/></noscript>
+</head>
+<body class="is-preload">
+
+<section id="header">
+    <div class="inner">
+        <h1>Register</h1>
+        <p>Create a user account to access protected pages.</p>
+        <ul class="actions special">
+            <li><a th:href="@{/}" class="button primary">Home</a></li>
+            <li><a th:href="@{/login}" class="button">Login</a></li>
+        </ul>
+    </div>
+</section>
+
+<section id="main">
+    <div class="inner">
+        <div th:if="${error}" class="box">
+            <strong th:text="${error}">Error</strong>
+        </div>
+        <form th:action="@{/register}" method="post" class="box">
+            <div class="fields">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" type="text" required/>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" required/>
+                </div>
+            </div>
+            <ul class="actions">
+                <li><button type="submit" class="button primary">Register</button></li>
+            </ul>
+        </form>
+    </div>
+</section>
+
+<section id="footer">
+    <div class="inner">
+        <ul class="copyright">
+            <li>&copy; TownsApp 2025</li>
+            <li>Theme: <a href="https://html5up.net/photon">Photon</a></li>
+        </ul>
+    </div>
+</section>
+
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/browser.min.js}"></script>
+<script th:src="@{/assets/js/breakpoints.min.js}"></script>
+<script th:src="@{/assets/js/util.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

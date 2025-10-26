@@ -25,15 +25,22 @@
         <ul class="actions special">
             <li><a th:href="@{/}" class="button primary">Home</a></li>
             <li><a th:href="@{/about}" class="button">About</a></li>
+            <li><a href="/database" class="button">DATABASE</a></li>
 
-            <!-- Login/Logout handling -->
+            <!-- Show REGISTER + LOGIN when anonymous -->
+            <li th:if="${#authentication == null or #authentication.name == 'anonymousUser'}">
+                <a th:href="@{/register}" class="button">Register</a>
+            </li>
             <li th:if="${#authentication == null or #authentication.name == 'anonymousUser'}">
                 <a th:href="@{/login}" class="button">Login</a>
             </li>
+
+            <!-- Show LOGOUT when logged in -->
             <li th:if="${#authentication != null and #authentication.name != 'anonymousUser'}">
                 <a th:href="@{/logout}" class="button">Logout</a>
             </li>
         </ul>
+
     </div>
 </section>
 
