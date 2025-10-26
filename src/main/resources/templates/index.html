@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title th:text="${title}">Photon by HTML5 UP</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+    <noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
+</head>
+
+<body class="is-preload">
+
+<!-- Header -->
+<section id="header">
+    <div class="inner">
+        <span class="icon solid major fa-cloud"></span>
+        <h1 th:text="${title}">Welcome to TownsApp</h1>
+        <p>A Spring Boot Seminar Project<br />
+            using Thymeleaf and a free responsive HTML5 theme.</p>
+        <ul class="actions special">
+            <li><a th:href="@{/}" class="button primary">Home</a></li>
+        </ul>
+    </div>
+</section>
+
+<!-- Main -->
+<section id="main">
+    <div class="inner">
+        <header class="major">
+            <h2>About the Project</h2>
+        </header>
+        <p>
+            This web application demonstrates how to build a responsive, data-driven system
+            using Java Spring Boot, Thymeleaf, and MySQL.
+            The later tasks will add authentication, CRUD operations, and chart visualizations
+            based on Hungarian town data.
+        </p>
+    </div>
+</section>
+
+<!-- Footer -->
+<section id="footer">
+    <div class="inner">
+        <ul class="copyright">
+            <li>&copy; TownsApp 2025</li>
+            <li>Design based on <a href="https://html5up.net/photon">Photon Theme</a></li>
+            <li><strong>Developers:</strong> Khaliun Tamir (EU2XJ4) & Enkhjee Gantulga (CPY45Q)</li>
+        </ul>
+    </div>
+</section>
+
+<!-- JS -->
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/browser.min.js}"></script>
+<script th:src="@{/assets/js/breakpoints.min.js}"></script>
+<script th:src="@{/assets/js/util.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>
