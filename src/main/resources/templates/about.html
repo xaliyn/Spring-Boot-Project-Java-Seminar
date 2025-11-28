@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <title th:text="${title}">About TownsApp</title>
+
+    <!-- Main CSS -->
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
     <noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
 </head>
 
 <body class="is-preload">
 
+<!-- HEADER SECTION -->
 <section id="header">
     <div class="inner">
         <h1 th:text="${title}">About TownsApp</h1>
         <p>This page provides background information about our project and its goals.</p>
+
         <ul class="actions special">
             <li><a th:href="@{/}" class="button primary">Home</a></li>
             <li><a th:href="@{/contact}" class="button">Contact</a></li>
@@ -21,32 +25,70 @@
     </div>
 </section>
 
+<!-- MAIN CONTENT -->
 <section id="main">
     <div class="inner">
+
         <header class="major">
             <h2>Project Description</h2>
         </header>
+
         <p>
-            <strong>TownsApp</strong> is a Java Spring Boot web application built for the
-            <em>Java Applications Seminar</em> at <strong>John von Neumann University</strong>.
-            The system demonstrates modern web-development techniques using
-            Spring Boot, Thymeleaf, and MySQL.
+            <strong>TownsApp</strong> is a Spring Boot web application created for the
+            <em>Java Applications Seminar</em> at
+            <strong>John von Neumann University (GAMF Faculty)</strong>.
+            It demonstrates real-world backend development using:
         </p>
+
+        <ul>
+            <li>Spring Boot (MVC, Security, Data JPA)</li>
+            <li>Thymeleaf templating</li>
+            <li>MySQL database</li>
+            <li>REST API endpoints</li>
+            <li>HTML5UP Photon theme</li>
+        </ul>
+
         <p>
-            The project analyzes Hungarian town and county data, provides CRUD operations,
-            RESTful APIs, and visual charts (Chart.js).
-            It’s designed as a teamwork project by:
+            The application manages <strong>Hungarian towns, counties, and population data</strong>.
+            It includes:
         </p>
+
+        <ul>
+            <li>User registration & login</li>
+            <li>Protected pages</li>
+            <li>CRUD operations for entities</li>
+            <li>Data listing and statistics</li>
+        </ul>
+
+        <header class="major">
+            <h2>Project Team</h2>
+        </header>
+
         <ul>
             <li><strong>Khaliun Tamir (EU2XJ4)</strong></li>
             <li><strong>Enkhjee Gantulga (CPY45Q)</strong></li>
         </ul>
+
         <p>
-            Both developers contributed equally to design, coding, and documentation.
+            Both team members contributed equally to:
         </p>
+
+        <ul>
+            <li>Backend development</li>
+            <li>Database design</li>
+            <li>Frontend templates</li>
+            <li>Documentation & presentation</li>
+        </ul>
+
+        <p>
+            The goal of TownsApp is to demonstrate a clean, functional
+            Spring Boot MVC application with authentication and data management features.
+        </p>
+
     </div>
 </section>
 
+<!-- FOOTER -->
 <section id="footer">
     <div class="inner">
         <ul class="copyright">
@@ -56,10 +98,12 @@
     </div>
 </section>
 
+<!-- Scripts -->
 <script th:src="@{/assets/js/jquery.min.js}"></script>
 <script th:src="@{/assets/js/browser.min.js}"></script>
 <script th:src="@{/assets/js/breakpoints.min.js}"></script>
 <script th:src="@{/assets/js/util.js}"></script>
 <script th:src="@{/assets/js/main.js}"></script>
+
 </body>
 </html>

@@ -2,7 +2,6 @@ package hu.nje.townsapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,23 +11,28 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        // ✅ Everything is public now
-                        .anyRequest().permitAll()
+                        .requestMatchers("/", "/register", "/saveUser",
+                                "/css/**", "/assets/**", "/images/**", "/js/**").permitAll()
+                        .anyRequest().authenticated()
                 )
-                // ✅ Disable login form because everything is public
-                .formLogin(form -> form.disable())
-                // ✅ Allow logout but not needed
-                .logout(logout -> logout.permitAll())
-                // ✅ Disable CSRF for testing / demo
-                .csrf(csrf -> csrf.disable());
+                .formLogin(login -> login
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/welcome", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                );
 
         return http.build();
     }
 
-    // Optional: only used for registration encoding
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home – TownsApp</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+<h1>Welcome to TownsApp</h1>
+
+<p>This is the main home page of the application.</p>
+
+<nav>
+    <a th:href="@{/}">Home</a> |
+    <a th:href="@{/about}">About</a> |
+    <a th:href="@{/contact}">Contact</a> |
+    <a th:href="@{/logout}">Logout</a>
+</nav>
+
+</body>
+</html>

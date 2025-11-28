@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Contact – TownsApp</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+
+<h1>Contact Us</h1>
+
+<p>If you have any questions, feel free to reach out through this simple form.</p>
+
+<form method="post" th:action="@{/contact}">
+    <label>Your Name:</label>
+    <input type="text" name="name" required /><br><br>
+
+    <label>Your Message:</label><br>
+    <textarea name="message" rows="5" cols="30" required></textarea><br><br>
+
+    <button type="submit">Send Message</button>
+</form>
+
+<nav>
+    <a th:href="@{/}">Home</a> |
+    <a th:href="@{/about}">About</a> |
+    <a th:href="@{/contact}">Contact</a> |
+    <a th:href="@{/logout}">Logout</a>
+</nav>
+
+</body>
+</html>

@@ -9,14 +9,19 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("title", "Welcome to TownsApp");
-        return "index";
+        model.addAttribute("title", "Home");
+        return "home";
     }
 
-    //  New method for Task 3
     @GetMapping("/about")
     public String about(Model model) {
-        model.addAttribute("title", "About TownsApp");
+        model.addAttribute("title", "About");
         return "about";
+    }
+
+    @GetMapping("/contact")
+    public String contact(Model model) {
+        model.addAttribute("title", "Contact");
+        return "contact";
     }
 }

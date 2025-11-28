@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-    <title>Register</title>
+    <title>Login</title>
 
     <link rel="stylesheet" th:href="@{/assets/css/main.css}">
     <noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}"></noscript>
@@ -12,11 +12,11 @@
 
 <section id="header">
     <div class="inner">
-        <h1>Register</h1>
-        <p>Create a user account to access protected pages.</p>
+        <h1>Login</h1>
+        <p>Enter your username and password.</p>
         <ul class="actions special">
-            <li><a th:href="@{/}" class="button primary">Home</a></li>
-            <li><a th:href="@{/login}" class="button">Login</a></li>
+            <li><a th:href="@{/}" class="button">Home</a></li>
+            <li><a th:href="@{/register}" class="button primary">Register</a></li>
         </ul>
     </div>
 </section>
@@ -24,37 +24,37 @@
 <section id="main">
     <div class="inner">
 
-        <!-- Error message if username exists -->
-        <div th:if="${error}" class="box" style="color: red; font-weight: bold;">
-            <span th:text="${error}">Error</span>
+        <!-- Registration success -->
+        <div th:if="${param.success}" class="box" style="color: green; font-weight: bold;">
+            Registration successful! Please log in.
         </div>
 
-        <!-- Registration form -->
-        <form th:action="@{/saveUser}" th:object="${user}" method="post" class="box">
+        <!-- Logout message -->
+        <div th:if="${param.logout}" class="box" style="color: blue; font-weight: bold;">
+            You have logged out successfully.
+        </div>
 
+        <!-- Login error -->
+        <div th:if="${param.error}" class="box" style="color: red; font-weight: bold;">
+            Invalid username or password.
+        </div>
+
+        <form th:action="@{/login}" method="post" class="box">
             <div class="fields">
-
                 <div class="field">
                     <label for="username">Username</label>
-                    <input th:field="*{username}" id="username" type="text" required>
-                </div>
-
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input th:field="*{email}" id="email" type="email" required>
+                    <input id="username" name="username" type="text" required>
                 </div>
 
                 <div class="field">
                     <label for="password">Password</label>
-                    <input th:field="*{password}" id="password" type="password" required>
+                    <input id="password" name="password" type="password" required>
                 </div>
-
             </div>
 
             <ul class="actions">
-                <li><button type="submit" class="button primary">Register</button></li>
+                <li><button type="submit" class="button primary">Login</button></li>
             </ul>
-
         </form>
 
     </div>
@@ -74,5 +74,6 @@
 <script th:src="@{/assets/js/breakpoints.min.js}"></script>
 <script th:src="@{/assets/js/util.js}"></script>
 <script th:src="@{/assets/js/main.js}"></script>
+
 </body>
 </html>

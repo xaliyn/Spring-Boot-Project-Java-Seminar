@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>Welcome</title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}">
+    <noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}"/></noscript>
+</head>
+<body class="is-preload">
+
+<section id="header">
+    <div class="inner">
+        <h1>Welcome!</h1>
+        <p>You have successfully logged in.</p>
+        <ul class="actions special">
+            <li><a th:href="@{/}" class="button">Home</a></li>
+            <li><a th:href="@{/logout}" class="button primary">Logout</a></li>
+        </ul>
+    </div>
+</section>
+
+<section id="main">
+    <div class="inner">
+
+        <div class="box">
+            <h2>Dashboard</h2>
+
+            <p>
+                Hello,
+                <strong th:text="${#authentication.name}">username</strong>! 👋
+            </p>
+
+            <p>
+                You now have access to protected pages of the TownsApp system.
+            </p>
+
+            <ul class="actions">
+                <li><a th:href="@{/}" class="button primary">Back to Home</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section id="footer">
+    <div class="inner">
+        <ul class="copyright">
+            <li>&copy; TownsApp 2025</li>
+            <li>Theme: <a href="https://html5up.net/photon">Photon</a></li>
+        </ul>
+    </div>
+</section>
+
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/browser.min.js}"></script>
+<script th:src="@{/assets/js/breakpoints.min.js}"></script>
+<script th:src="@{/assets/js/util.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+
+</body>
+</html>
